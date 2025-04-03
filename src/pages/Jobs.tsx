@@ -121,14 +121,14 @@ export default function Jobs() {
             </div>
             
             <Select
-              value={locationFilter || ""}
-              onValueChange={(value) => setLocationFilter(value || null)}
+              value={locationFilter || "all"}
+              onValueChange={(value) => setLocationFilter(value === "all" ? null : value)}
             >
               <SelectTrigger>
                 <SelectValue placeholder="All Locations" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Locations</SelectItem>
+                <SelectItem value="all">All Locations</SelectItem>
                 {locations.map(location => (
                   <SelectItem key={location} value={location}>
                     {location}
@@ -138,14 +138,14 @@ export default function Jobs() {
             </Select>
             
             <Select
-              value={jobTypeFilter || ""}
-              onValueChange={(value) => setJobTypeFilter(value || null)}
+              value={jobTypeFilter || "all"}
+              onValueChange={(value) => setJobTypeFilter(value === "all" ? null : value)}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Job Type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Types</SelectItem>
+                <SelectItem value="all">All Types</SelectItem>
                 <SelectItem value="full-time">Full-time</SelectItem>
                 <SelectItem value="part-time">Part-time</SelectItem>
                 <SelectItem value="contract">Contract</SelectItem>
