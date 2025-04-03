@@ -1,73 +1,102 @@
-# Welcome to your Lovable project
 
-## Project info
+# TalentLink Job Platform
 
-**URL**: https://lovable.dev/projects/947479eb-09be-4688-8885-804f699ab065
+A comprehensive job search and recruitment platform built with React (frontend) and Flask/SQLite (backend).
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Dual User Types**:
+  - Job seekers can browse jobs, upload resumes, and track applications
+  - Employers can post jobs and manage applicants
+  
+- **Authentication System**:
+  - Register, login, and profile management
+  
+- **Dashboard with Analytics**:
+  - Visual metrics using charts and graphs
+  - Application status tracking
+  
+- **Mock Users for Testing**:
+  - Job Seeker: username `muser`, password `muser`
+  - Employer: username `mvc`, password `mvc`
 
-**Use Lovable**
+## Technical Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/947479eb-09be-4688-8885-804f699ab065) and start prompting.
+### Frontend
+- React with TypeScript
+- Tailwind CSS
+- shadcn/ui components
+- AG Grid (for data tables)
+- Recharts (for graphs and charts)
 
-Changes made via Lovable will be committed automatically to this repo.
+### Backend
+- Flask (Python)
+- SQLite (Database)
+- RESTful API architecture
 
-**Use your preferred IDE**
+## Setup Instructions
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Frontend
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Install Node.js dependencies:
+```bash
+npm install
+```
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+2. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Backend
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. Create a Python virtual environment (optional but recommended):
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-**Use GitHub Codespaces**
+2. Install Python dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. Start the Flask server:
+```bash
+python app.py
+```
 
-## What technologies are used for this project?
+## API Endpoints
 
-This project is built with:
+### Authentication
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - User login
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Jobs
+- `GET /api/jobs` - Get all active jobs
+- `GET /api/jobs/:id` - Get a specific job
+- `POST /api/jobs` - Create a new job
+- `PUT /api/jobs/:id` - Update a job
+- `DELETE /api/jobs/:id` - Delete a job
+- `GET /api/employers/:id/jobs` - Get all jobs posted by an employer
 
-## How can I deploy this project?
+### Applications
+- `GET /api/users/:id/applications` - Get all applications for a user
+- `GET /api/jobs/:id/applications` - Get all applications for a job
+- `POST /api/jobs/:id/apply` - Apply for a job
+- `PUT /api/applications/:id/status` - Update application status
+- `PUT /api/applications/:id/notes` - Update application notes
 
-Simply open [Lovable](https://lovable.dev/projects/947479eb-09be-4688-8885-804f699ab065) and click on Share -> Publish.
+### Resumes
+- `GET /api/users/:id/resumes` - Get all resumes for a user
+- `POST /api/users/:id/resumes` - Upload a new resume
+- `DELETE /api/resumes/:id` - Delete a resume
+- `PUT /api/users/:id/resumes/:id/default` - Set a resume as default
 
-## Can I connect a custom domain to my Lovable project?
+### Stats
+- `GET /api/employers/:id/stats` - Get employer statistics
+- `GET /api/users/:id/stats` - Get job seeker statistics
 
-Yes it is!
+## License
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+MIT
